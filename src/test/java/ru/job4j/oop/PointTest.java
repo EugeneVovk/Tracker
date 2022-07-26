@@ -57,4 +57,31 @@ public class PointTest {
         double actual = a.distance(b);
         Assert.assertEquals(expected, actual, 0.01);
     }
+
+    @Test
+    public void when125And342Then5dot74() {
+        Point a = new Point(1, 2, 5);
+        Point b = new Point(3, 4, 0);
+        double rsl = a.distance3d(b);
+        double expected = 5.74;
+        Assert.assertEquals(expected, rsl, 0.01);
+    }
+
+    @Test
+    public void when123AndMinus3Minus40Then7dot81() {
+        Point a = new Point(1, 2, 3);
+        Point b = new Point(-3, -4, 0);
+        double rsl = a.distance3d(b);
+        double expected = 7.81;
+        Assert.assertEquals(expected, rsl, 0.01);
+    }
+
+    @Test
+    public void whenAllValuesAreTheSameThen0() {
+        Point a = new Point(-1, -1, -1);
+        Point b = new Point(-1, -1, -1);
+        double rsl = a.distance3d(b);
+        double expected = 0;
+        Assert.assertEquals(expected, rsl, 0.01);
+    }
 }
