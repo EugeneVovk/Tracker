@@ -7,10 +7,11 @@ package ru.job4j.pojo;
  */
 public class ShopDrop {
     public static void main(String[] args) {
-        Product[] products = new Product[3];
+        Product[] products = new Product[4];
         products[0] = new Product("Milk", 10);
         products[1] = new Product("Bread", 4);
         products[2] = new Product("Egg", 19);
+        products[3] = new Product("milk", 10);
         for (Product product : products) {
             System.out.println(product.getName());
         }
@@ -23,6 +24,8 @@ public class ShopDrop {
                 System.out.println("null");
             }
         }
+        System.out.println(equalTwoProducts(products[0], products[3]));
+
     }
 
     public static Product[] delete(Product[] products, int index) {
@@ -31,5 +34,9 @@ public class ShopDrop {
         }
         products[products.length - 1] = null;
         return products;
+    }
+
+    public static boolean equalTwoProducts(Product p1, Product p2) {
+        return p1.equals(p2);
     }
 }
