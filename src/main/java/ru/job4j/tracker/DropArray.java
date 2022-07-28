@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 /**
  * Копирование массива без null
- *
+ * <p>
  * Вначале мы создаем два массива. Один заполнен строками и нулями.
  * Второй массив создаем пустой по размеру первого.
  * В него мы будем копировать ненулевые элементы.
@@ -14,7 +14,7 @@ import java.util.Arrays;
  * Он одновременно является текущим индексом для массива rsl,
  * также мы будем обрезать этот массив по этому размеру.
  * На последнем этапе мы обрезаем новый массив по полученному размеру.
- *
+ * <p>
  * rsl = Arrays.copyOf(rsl, size);
  */
 public class DropArray {
@@ -32,5 +32,9 @@ public class DropArray {
         System.out.println(Arrays.toString(rsl));
         rsl = Arrays.copyOf(rsl, size);
         System.out.println(Arrays.toString(rsl));
+
+        String[] names2 = {"Anna", null, "Ivan", "Stepan", "Fedor"};
+        System.arraycopy(names2, 2, names2, 1, 3);
+        System.out.println(Arrays.toString(names2));
     }
 }

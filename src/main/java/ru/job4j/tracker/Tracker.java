@@ -8,6 +8,7 @@ import java.util.Arrays;
  * получение списка всех заявок - public Item[] findAll();
  * получение списка по имени - public Item[] findByName(String key);
  * получение заявки по id - public Item findById(int id);
+ * замена заявки по id - public boolean replace(int id, Item item)
  */
 public class Tracker {
     private final Item[] items = new Item[100];
@@ -66,16 +67,60 @@ public class Tracker {
      * сравнивая id с аргументом int id
      * и возвращает найденный Item.
      * Если Item не найден - возвращает null.
+     * upd: используем метод private int indexOf(int id)
      */
     public Item findById(int id) {
-        Item rsl = null;
+        return indexOf(id) != -1 ? items[indexOf(id)] : null;
+    }
+
+    /**
+     * Метод public boolean replace(int id, Item item)
+     * удаляет заявку, которая уже есть в системе
+     * и добавляет новую в эту ячейку
+     */
+    public boolean replace(int id, Item item) {
+        int idx = indexOf(id);
+        boolean rsl = idx != -1;
+        if (rsl) {
+            item.setId(id);
+            items[idx] = item;
+        }
+        return rsl;
+    }
+
+    /**
+     * Метод private int indexOf(int id),
+     * который будет возвращать index по id.
+     */
+    private int indexOf(int id) {
+        int rsl = -1;
         for (int index = 0; index < size; index++) {
-            Item item = items[index];
-            if (item.getId() == id) {
-                rsl = item;
+            if (items[index].getId() == id) {
+                rsl = index;
                 break;
             }
         }
+        return rsl;
+    }
+
+    /**
+     * Метод public boolean delete(int id)
+     * удаление заявки по id
+     */
+    public boolean delete(int id) {
+        int idx = indexOf(id);
+        boolean rsl = idx != -1;
+        if (rsl) {
+            items[idx] = null;
+            for (int i = idx + 1; i < size; i++) {
+                if (items[i] != null) {
+                    Item tmp = items[i];
+                    items[idx++] = items[i];
+                    items[i] = tmp;
+                }
+            }
+        }
+        size--;
         return rsl;
     }
 }
