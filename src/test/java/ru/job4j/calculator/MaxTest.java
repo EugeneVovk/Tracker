@@ -73,4 +73,24 @@ public class MaxTest {
         int expected = 100;
         Assert.assertEquals(expected, result);
     }
+
+    @Test
+    public void whenMaxFirst() {
+        Assert.assertEquals(2, Max.max(2, 1));
+    }
+
+    @Test
+    public void whenMaxSecond() {
+        Assert.assertEquals(2, Max.max(1, 2));
+    }
+
+    @Test
+    public void whenEquals() {
+        Assert.assertEquals(1, Max.max(1, 1));
+    }
+
+    @Test
+    public void whenNegativeNumber() {
+        Assert.assertEquals(-2, Max.max(-2, -4));
+    }
 }
