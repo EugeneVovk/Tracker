@@ -1,4 +1,4 @@
-package ru.job4j.starategy;
+package ru.job4j.patterns.starategy;
 
 public class DeveloperRunner {
     public static void main(String[] args) {
