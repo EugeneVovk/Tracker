@@ -14,7 +14,7 @@ public class Developer {
     }
 
     /**
-     * Метода выполнения активности
+     * Метод выполнения активности
      */
     public void executeActivity() {
         activity.justDoIt();
